@@ -3,7 +3,7 @@ import os
 from functools import wraps
 
 import boto
-from boto.exception import StorageResponseError
+from boto.exception import StorageResponseError, BotoClientError, BotoServerError
 from pants.cache.artifact_cache import (ArtifactCache,
                                         NonfatalArtifactCacheError,
                                         UnreadableArtifact)
@@ -21,9 +21,13 @@ def trap_s3_errors(func):
       return func(self, cache_key, *args, **kwargs)
     except NonfatalArtifactCacheError as e:
       raise e
-    except Exception as e:
+    except BotoClientError as e:
       logger.warn('\nError while calling remote artifact cache: {0}\n'.format(e))
       raise NonfatalArtifactCacheError(cache_key, str(e))
+    except BotoServerError as e:
+      logger.warn('\nError while calling remote artifact cache: {0}\n'.format(e))
+      raise NonfatalArtifactCacheError(cache_key, str(e))
+
   return error_decorator
 
 
