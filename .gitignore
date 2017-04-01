@@ -87,3 +87,9 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# Pants
+.idea/
+.local_artifact_cache/
+.pants.d/
+.pants.workdir.file_lock
