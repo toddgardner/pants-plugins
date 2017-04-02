@@ -9,16 +9,20 @@ python_library(
 )
 
 python_library(
-  name='s3_cache_packaged',
+  name='s3cache_packaged',
   sources=[],
   dependencies=[
-    ':s3_cache',
+    ':s3cache',
   ],
   provides=setup_py(
-    name='verst.pants.s3_cache',
-	version='1.0.0',
+    name='verst.pants.s3cache',
+    maintainer="Todd Gardner",
+    maintainer_email="todd.gardner@gmail.com",
+	version='1.3.0.dev14',
 	url='https://github.com/toddgardner/pants-plugins',
 	description='An S3 caching backend for pants artifact cache',
+	license='MIT',
+	long_description='An S3 caching backend for pants artifact cache',
 	classifiers=[
       'Intended Audience :: Developers',
       'License :: OSI Approved :: MIT License',

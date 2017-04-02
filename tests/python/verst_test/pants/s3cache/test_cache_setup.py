@@ -18,8 +18,8 @@ from pants.task.task import Task
 from pants.util.contextutil import temporary_dir
 from pants_test.base_test import BaseTest
 
-from verst.pants.s3_cache.cache_setup import patch
-from verst.pants.s3_cache.s3_cache import S3ArtifactCache
+from verst.pants.s3cache.cache_setup import patch
+from verst.pants.s3cache.s3cache import S3ArtifactCache
 
 
 class DummyContext(object):

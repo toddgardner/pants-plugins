@@ -1,6 +1,6 @@
 boto==2.45.0
-pantsbuild.pants>=1.0.0,<1.5.0
-pantsbuild.pants.testinfra>=1.0.0,<1.5.0
+pantsbuild.pants==1.3.0.dev14
+pantsbuild.pants.testinfra==1.3.0.dev14
 pyjavaproperties==0.6
 moto==0.4.31
 mock==2.0.0

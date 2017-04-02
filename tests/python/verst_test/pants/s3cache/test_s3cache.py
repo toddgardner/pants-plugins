@@ -19,7 +19,7 @@ from pants.invalidation.build_invalidator import CacheKey
 from pants.util.contextutil import temporary_dir, temporary_file
 from pants.util.dirutil import safe_mkdir
 
-from verst.pants.s3_cache.s3_cache import S3ArtifactCache
+from verst.pants.s3cache.s3cache import S3ArtifactCache
 
 TEST_CONTENT1 = b'fraggle'
 TEST_CONTENT2 = b'gobo'

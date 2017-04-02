@@ -3,7 +3,7 @@ import os
 from functools import wraps
 
 import boto
-from boto.exception import StorageResponseError, BotoClientError, BotoServerError
+from boto.exception import BotoClientError, BotoServerError, StorageResponseError
 from pants.cache.artifact_cache import (ArtifactCache,
                                         NonfatalArtifactCacheError,
                                         UnreadableArtifact)

@@ -6,7 +6,7 @@ from pants.cache.local_artifact_cache import (LocalArtifactCache,
                                               TempLocalArtifactCache)
 from pants.cache.pinger import BestUrlSelector
 from pants.cache.restful_artifact_cache import RESTfulArtifactCache
-from verst.pants.s3_cache.s3_cache import S3ArtifactCache
+from verst.pants.s3cache.s3cache import S3ArtifactCache
 
 
 def _is_s3(string_spec):
