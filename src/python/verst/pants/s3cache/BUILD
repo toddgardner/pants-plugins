@@ -18,7 +18,7 @@ python_library(
     name='verst.pants.s3cache',
     maintainer="Todd Gardner",
     maintainer_email="todd.gardner@gmail.com",
-	version='1.3.0.dev14',
+	version='1.1.4',
 	url='https://github.com/toddgardner/pants-plugins',
 	description='An S3 caching backend for pants artifact cache',
 	license='MIT',
@@ -35,9 +35,9 @@ python_library(
     zip_safe=True,
     entry_points={
       'pantsbuild.plugin': [
-        'build_file_aliases = verst.pants.s3_cache.register:build_file_aliases',
-        'register_goals = verst.pants.s3_cache.register:register_goals',
-        'global_subsystems = verst.pants.s3_cache.register:global_subsystems',
+        'build_file_aliases = verst.pants.s3cache.register:build_file_aliases',
+        'register_goals = verst.pants.s3cache.register:register_goals',
+        'global_subsystems = verst.pants.s3cache.register:global_subsystems',
       ]
     },
   )
