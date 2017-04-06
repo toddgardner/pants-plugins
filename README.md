@@ -2,13 +2,18 @@
 
 A set of open sourced plugins for the pants build system.
 
+Current Plugins:
+
+* verst.pants.s3cache - an artifact cache based on s3.
+* verst.pants.docker - docker integration for pants.
+
 ## Installation
 
 It's intended for these to be distributed via pypi. However, at the moment there's some problems with installing plugins, so you may need to copy these source files into your repo.
 
 The current issues with plugins are:
 
-* If you're on a pre-release version of 1.3.0, it'll cause resolution issues ([this](https://github.com/pantsbuild/pex/pull/373) and [this](https://github.com/pantsbuild/pex/pull/374)
+* If you're on a pre-release version of 1.3.0, it'll cause resolution issues ([this](https://github.com/pantsbuild/pex/pull/373) and [this](https://github.com/pantsbuild/pex/pull/374))
 * If you use the s3plugin, the boto dependency will be problematic: see [here](https://github.com/pantsbuild/pants/issues/4428)
 
 So you can use pypi but only if on a stable pants release and using verst.pants.docker.
