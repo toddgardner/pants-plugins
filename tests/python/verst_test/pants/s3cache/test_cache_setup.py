@@ -2,14 +2,15 @@
 # Copyright 2015 Pants project contributors (see CONTRIBUTORS.md).
 # Licensed under the Apache License, Version 2.0 (see LICENSE).
 
-from __future__ import (absolute_import, division, generators, nested_scopes, print_function,
-                        unicode_literals, with_statement)
+from __future__ import (absolute_import, division, generators, nested_scopes,
+                        print_function, unicode_literals, with_statement)
 
-import os
 import logging
+import os
 
 from pants.cache.cache_setup import (CacheSetup, CacheSpecFormatError,
-                                     LocalCacheSpecRequiredError, RemoteCacheSpecRequiredError,
+                                     LocalCacheSpecRequiredError,
+                                     RemoteCacheSpecRequiredError,
                                      TooManyCacheSpecsError)
 from pants.cache.local_artifact_cache import LocalArtifactCache
 from pants.cache.restful_artifact_cache import RESTfulArtifactCache
@@ -17,7 +18,6 @@ from pants.subsystem.subsystem import Subsystem
 from pants.task.task import Task
 from pants.util.contextutil import temporary_dir
 from pants_test.base_test import BaseTest
-
 from verst.pants.s3cache.cache_setup import patch
 from verst.pants.s3cache.s3cache import S3ArtifactCache
 

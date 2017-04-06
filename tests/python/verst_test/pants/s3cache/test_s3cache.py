@@ -2,23 +2,21 @@
 # Copyright 2014 Pants project contributors (see CONTRIBUTORS.md).
 # Licensed under the Apache License, Version 2.0 (see LICENSE).
 
-from __future__ import (absolute_import, division, generators, nested_scopes, print_function,
-                        unicode_literals, with_statement)
+from __future__ import (absolute_import, division, generators, nested_scopes,
+                        print_function, unicode_literals, with_statement)
 
 import os
 from contextlib import contextmanager
 
-import boto
+import boto3
 import pytest
-
 from moto import mock_s3
-
 from pants.cache.artifact_cache import UnreadableArtifact
-from pants.cache.local_artifact_cache import LocalArtifactCache, TempLocalArtifactCache
+from pants.cache.local_artifact_cache import (LocalArtifactCache,
+                                              TempLocalArtifactCache)
 from pants.invalidation.build_invalidator import CacheKey
 from pants.util.contextutil import temporary_dir, temporary_file
 from pants.util.dirutil import safe_mkdir
-
 from verst.pants.s3cache.s3cache import S3ArtifactCache
 
 TEST_CONTENT1 = b'fraggle'
@@ -57,9 +55,9 @@ def s3_fixture():
   mock_s3().start()
 
   try:
-    conn = boto.connect_s3()
-    conn.create_bucket(_TEST_BUCKET)
-    yield conn
+    s3 = boto3.resource('s3')
+    s3.create_bucket(Bucket=_TEST_BUCKET)
+    yield s3
   finally:
     mock_s3().stop()
 
@@ -94,11 +92,6 @@ def other_machine_cache():
         artifact_root, cache_root, compression=1)
 
       yield S3ArtifactCache(artifact_root, 's3://' + _TEST_BUCKET, local_cache)
-
-
-def write_s3_file(conn, key, value):
-  key = conn.get_bucket(_TEST_BUCKET).get_key(key, validate=False)
-  key.set_contents_from_string(value)
 
 
 @contextmanager
@@ -171,10 +164,8 @@ def test_corrupted_cached_file_cleaned_up(
   with setup_test_file(remote_results_dir) as path:
     other_machine_cache.insert(cache_key, [path])
 
-    write_s3_file(
-      s3_fixture,
-      s3_cache_instance._path_for_key(cache_key),
-      b'not a valid tgz any more')
+    object = s3_fixture.Object(_TEST_BUCKET, s3_cache_instance._path_for_key(cache_key))
+    object.put(Body=b'not a valid tgz any more')
 
     result = s3_cache_instance.use_cached_files(
       cache_key, results_dir=local_results_dir)
