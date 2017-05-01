@@ -69,8 +69,6 @@ class K8SCloneNamespace(Task):
 
   def clone_deployments(self, k8s):
     for deploy in k8s.list_namespaced_deployment('devo').items:
-      if deploy.metadata.name in ('nginx-ingress-devo'):
-        continue
       deploy.metadata = { 'name': deploy.metadata.name, 'labels': deploy.metadata.labels, 'namespace': self.new_namespace }
       deploy.status = {}
       deploy.spec.template.metadata.creation_timestamp = None
