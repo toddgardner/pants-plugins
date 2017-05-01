@@ -6,6 +6,15 @@ Current Plugins:
 
 * verst.pants.s3cache - an artifact cache based on s3.
 * verst.pants.docker - docker integration for pants.
+* verst.pants.ensime - An updated ensime generator, installed under ensime-verst
+* verst.pants.k8s - Tools for controlling k8s from pants (currently can clone namespaces)
+* verst.pants.resources - Adds an absolute_resources target, which places references with 
+* verst.pants.scalastyle - adds scalastyle to compile, with a soft failure mode
+* verst.pants.slick - adds a slick_gen rule for generating slick from the repo.
+* verst.pants.specs2 - add a specs2_tests rule for running specs2 files directly.
+* verst.pants.yoyo - apply Yoyo migrations from the repo.
+
+Note: all but the first two were just added to the repo, and still need some tests and pypi packages.
 
 ## Installation
 
