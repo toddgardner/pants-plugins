@@ -22,7 +22,7 @@ VENV_VERSION=15.0.2
 
 # This requirement is installed before pantsbuild.pants to hack around
 # interpreters that have newer setuptools already installed, effectively
-# re-installing an older setuptools and pinning low to a version known to be 
+# re-installing an older setuptools and pinning low to a version known to be
 # ingestable by both pants and pex for all reasonable versions of pants.
 # See:
 #   https://github.com/pantsbuild/pants/issues/3948
@@ -35,6 +35,7 @@ EXTRA_REQUIREMENTS=(
     "pyjavaproperties==0.6"
     "requests==2.5.3"
     "requests-futures==0.9.4"
+    "kubernetes==1.0.0"
 )
 VENV_PACKAGE=virtualenv-${VENV_VERSION}
 VENV_TARBALL=${VENV_PACKAGE}.tar.gz

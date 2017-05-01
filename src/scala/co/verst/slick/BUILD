@@ -1,0 +1,20 @@
+scala_library(
+  name="slick",
+  sources=rglobs("*.scala"),
+  dependencies=[
+    "3rdparty:slick-codegen",
+    "3rdparty:slick",
+    "3rdparty:slick-hikaricp",
+    "3rdparty:slick-pg",
+    "3rdparty:slick-pg-circe",
+    "3rdparty:scopt"
+  ]
+)
+
+jvm_binary(
+  name="schema-gen",
+  dependencies=[
+    ":slick",
+  ],
+  main="co.verst.slick.SlickGen"
+)
