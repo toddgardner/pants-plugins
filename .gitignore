@@ -93,3 +93,4 @@ ENV/
 .local_artifact_cache/
 .pants.d/
 .pants.workdir.file_lock
+.pids

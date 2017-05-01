@@ -1,0 +1,63 @@
+(
+  :root-dir "{{project.root_dir}}"
+  :cache-dir "{{project.cache_dir}}"
+  :java-home "{{project.java_home}}"
+  :java-flags ("-Xmx4g")
+  :reference-source-roots ("{{project.java_home}}/src.zip")
+  :scala-version "{{project.scala.language_level}}"
+  :name "{{project.name}}"
+  :subprojects (
+    (
+      :name "{{project.name}}"
+      :module-name "{{project.name}}"
+      :depends-on-modules (
+      )
+      :compile-deps (
+	  {{#project.scala.compiler_classpath}}
+	    "{{.}}"
+          {{/project.scala.compiler_classpath}}
+          {{#project.internal_jars}}
+            "{{.}}"
+          {{/project.internal_jars}}
+          {{#project.external_jars}}
+            "{{.}}"
+          {{/project.external_jars}}
+      )
+      :runtime-deps (
+          {{#project.scala.compiler_classpath}}
+            "{{.}}"
+          {{/project.scala.compiler_classpath}}
+         {{#project.internal_jars}}
+            "{{.}}"
+          {{/project.internal_jars}}
+          {{#project.external_jars}}
+            "{{.}}"
+          {{/project.external_jars}}
+      )
+      :source-roots (
+        {{#project.source_bases?}}
+	     {{#project.source_bases}}
+                "{{path}}"
+	     {{/project.source_bases}}
+	  {{/project.source_bases?}}
+      )
+      :reference-source-roots (
+        {{#project.external_source_jars?}}
+          {{#project.external_source_jars}}
+            "{{.}}"
+          {{/project.external_source_jars}}
+        {{/project.external_source_jars?}}
+      )
+
+      :doc-jars (
+        {{#project.external_javadoc_jars?}}
+          {{#project.external_javadoc_jars}}
+            "{{.}}"
+          {{/project.external_javadoc_jars}}
+        {{/project.external_javadoc_jars?}}
+      )
+
+      :target "{{project.outdir}}"
+    )
+  )
+)
