@@ -165,6 +165,6 @@ class S3ArtifactCache(ArtifactCache):
 
   def _path_for_key(self, cache_key):
     if len(self._path) == 0:
-      return '{1}/{2}.tgz'.format(cache_key.hash, cache_key.id)
+      return '{0}/{1}.tgz'.format(cache_key.hash, cache_key.id)
     else:
       return '{0}/{1}/{2}.tgz'.format(self._path, cache_key.hash, cache_key.id)
