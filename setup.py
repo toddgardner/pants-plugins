@@ -26,7 +26,7 @@ setup(**
     'name': 'verst.pants.s3cache',
     'namespace_packages': ['verst', 'verst.pants', 'verst.pants.s3cache'],
     'package_data': {   },
-    'package_dir': {   '': 'src'},
+    'package_dir': {   '': 'src/python'},
     'packages': ['verst', 'verst.pants', 'verst.pants.s3cache'],
     'url': 'https://github.com/toddgardner/pants-plugins',
     'version': '1.2.0',
