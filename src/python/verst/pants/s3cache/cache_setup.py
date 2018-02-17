@@ -43,7 +43,7 @@ def _do_create_artifact_cache(self, spec, action):
   artifact_root = self._options.pants_workdir
 
   def create_local_cache(parent_path):
-    path = os.path.join(parent_path, self._task.stable_name())
+    path = os.path.join(parent_path, self._cache_dirname)
     self._log.debug('{0} {1} local artifact cache at {2}'
                     .format(self._task.stable_name(), action, path))
     return LocalArtifactCache(artifact_root, path, compression,
@@ -62,7 +62,7 @@ def _do_create_artifact_cache(self, spec, action):
 
     urls = self.get_available_urls(urls)
     if len(urls) > 0:
-      best_url_selector = BestUrlSelector(['{}/{}'.format(url.rstrip('/'), self._task.stable_name())
+      best_url_selector = BestUrlSelector(['{}/{}'.format(url.rstrip('/'), self._cache_dirname)
                                             for url in urls])
       return RESTfulArtifactCache(artifact_root, best_url_selector, local_cache)
 
