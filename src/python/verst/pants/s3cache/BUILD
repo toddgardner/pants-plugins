@@ -18,7 +18,7 @@ python_library(
     name='verst.pants.s3cache',
     maintainer="Todd Gardner",
     maintainer_email="todd.gardner@gmail.com",
-	version='1.2.0',
+	version='1.4.0',
 	url='https://github.com/toddgardner/pants-plugins',
 	description='An S3 caching backend for pants artifact cache',
 	license='MIT',
