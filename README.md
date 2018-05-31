@@ -8,7 +8,7 @@ Current Plugins:
 * verst.pants.docker - docker integration for pants.
 * verst.pants.ensime - An updated ensime generator, installed under ensime-verst
 * verst.pants.k8s - Tools for controlling k8s from pants (currently can clone namespaces)
-* verst.pants.resources - Adds an absolute_resources target, which places references with 
+* verst.pants.resources - Adds an absolute_resources target, which places references with
 * verst.pants.scalastyle - adds scalastyle to compile, with a soft failure mode
 * verst.pants.slick - adds a slick_gen rule for generating slick from the repo.
 * verst.pants.specs2 - add a specs2_tests rule for running specs2 files directly.
@@ -35,15 +35,10 @@ Change your pants.ini
 
 ```
 [GLOBAL]
-plugin_version: 1.1.1
+plugin_version: 1.2.0
 
 plugins: +[
     "verst.pants.docker==%(plugin_version)s",
-  ]
-
-# Install the packages
-backend_packages: +[
-    "verst.pants.docker",
   ]
 ```
 
