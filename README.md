@@ -35,8 +35,10 @@ Change your pants.ini
 
 ```
 [GLOBAL]
+plugin_version: 1.2.0
+
 plugins: +[
-    "verst.pants.docker==1.2.0",
+    "verst.pants.docker==%(plugin_version)s",
   ]
 ```
 
