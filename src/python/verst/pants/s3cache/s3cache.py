@@ -17,6 +17,7 @@ boto3.set_stream_logger(name='boto3.resources', level=logging.WARN)
 boto3.set_stream_logger(name='botocore', level=logging.WARN)
 
 logger = logging.getLogger(__name__)
+# If this file is not specified, fallback to ENV vars or AWS "artifacts" profile
 CONFIG_FILE = os.path.expanduser('~/.pants/.s3credentials')
 
 _NETWORK_ERRORS = [
@@ -42,10 +43,11 @@ def connect_to_s3():
         logger.debug('Reading access key from {0}'.format(CONFIG_FILE))
         boto_kwargs['aws_secret_access_key'] = secret_key
   except IOError:
-    logger.debug('Could not load {0}, using ENV vars'.format(CONFIG_FILE))
+    logger.debug('Could not load {0}, using [artifacts] profile or ENV vars'.format(CONFIG_FILE))
 
   config = Config(connect_timeout=4, read_timeout=4)
-  return boto3.resource('s3', config=config, **boto_kwargs)
+  session = boto3.Session(profile_name='artifacts')
+  return session.resource('s3', config=config, **boto_kwargs)
 
 s3 = connect_to_s3()
 
