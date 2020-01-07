@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from pants.base.exceptions import TaskError
 from pants.base.build_environment import get_scm
 from pants.task.task import Task

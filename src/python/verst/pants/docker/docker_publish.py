@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from .docker_base_task import DockerBaseTask
 from .target import DockerTargetBase
 

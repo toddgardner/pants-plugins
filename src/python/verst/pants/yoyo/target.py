@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from pants.build_graph.target import Target
 from pants.base.payload import Payload
 from pants.base.payload_field import PrimitiveField

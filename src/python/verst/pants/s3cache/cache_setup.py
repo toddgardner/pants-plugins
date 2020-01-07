@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 import os
 
 from pants.base.deprecated import deprecated_conditional
@@ -7,6 +8,7 @@ from pants.cache.local_artifact_cache import (LocalArtifactCache,
 from pants.cache.pinger import BestUrlSelector
 from pants.cache.restful_artifact_cache import RESTfulArtifactCache
 from verst.pants.s3cache.s3cache import S3ArtifactCache
+from six.moves import range
 
 
 def _is_s3(string_spec):
@@ -29,7 +31,7 @@ def _do_create_artifact_cache(self, spec, action):
     - A list or tuple of two specs, local, then remote, each as described above
   """
   compression = self._options.compression_level
-  if compression not in range(10):
+  if compression not in list(range(10)):
     raise ValueError('compression_level must be an integer 0-9: {}'.format(compression))
 
   deprecated_conditional(

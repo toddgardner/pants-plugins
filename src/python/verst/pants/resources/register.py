@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from pants.build_graph.build_file_aliases import BuildFileAliases
 from .target import AbsoluteResources
 

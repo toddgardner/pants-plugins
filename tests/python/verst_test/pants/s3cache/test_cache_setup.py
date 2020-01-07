@@ -43,7 +43,7 @@ class MockPinger(object):
 
   # Returns a fake ping time such that the last host is always the 'fastest'.
   def pings(self, hosts):
-    return map(lambda host: (host, self._hosts_to_times.get(host, 9999)), hosts)
+    return [(host, self._hosts_to_times.get(host, 9999)) for host in hosts]
 
 
 class TestCacheSetup(BaseTest):

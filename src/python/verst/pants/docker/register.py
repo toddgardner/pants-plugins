@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from .docker_jvm_app_bundle_task import DockerJvmAppBundleTask
 from .docker_publish import DockerPublish
 from .docker_python_bundle_task import DockerPythonBundleTask

@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from pants.goal.task_registrar import TaskRegistrar as task
 from .k8s_clone_namespace import K8SCloneNamespace
 

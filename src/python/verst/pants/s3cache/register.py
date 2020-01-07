@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from .cache_setup import patch
 
 from pants.build_graph.build_file_aliases import BuildFileAliases

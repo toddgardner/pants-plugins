@@ -16,6 +16,7 @@ from pants.base.generator import Generator, TemplateData
 from pants.util.dirutil import safe_open
 from pants.backend.jvm.subsystems import scala_platform
 from pants.backend.jvm.subsystems.jvm_platform import JvmPlatform
+from six.moves import map
 
 _TEMPLATE_BASEDIR = os.path.join('templates', 'ensime')
 _DEFAULT_PROJECT_DIR = './.pants.d/ensime/project'
@@ -74,7 +75,7 @@ class EnsimeGen(IdeGen):
     if project.has_python:
       source_sets.extend(project.py_sources)
 
-    source_bases = frozenset(map(create_source_base_template, source_sets))
+    source_bases = frozenset(list(map(create_source_base_template, source_sets)))
 
     libs = []
 

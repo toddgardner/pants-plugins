@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 import os
 from collections import defaultdict
 
@@ -168,10 +169,10 @@ class Specs2Run(JUnitRun):
     for test in tests:
       target = test_registry.get_owning_target(test)
       inverted[target].append(test)
-    return inverted.values()
+    return list(inverted.values())
 
   @property
   def junit_xml_dir(self):
-    if os.environ.has_key("CIRCLE_TEST_REPORTS"):
+    if "CIRCLE_TEST_REPORTS" in os.environ:
       return os.path.join(os.environ["CIRCLE_TEST_REPORTS"], "specs2")
     return super(Specs2Run, self).workdir
