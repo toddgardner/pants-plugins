@@ -16,8 +16,8 @@ setup(**
                                                  'register_goals = verst.pants.s3cache.register:register_goals',
                                                  'global_subsystems = verst.pants.s3cache.register:global_subsystems']},
     'install_requires': [   'boto3==1.4.4',
-                            'pantsbuild.pants>=1.1.0',
-                            'pyjavaproperties==0.6',
+                            'pantsbuild.pants>=1.16.0',
+                            'pyjavaproperties==0.7',
                             'six>=1.9.0,<2'],
     'license': 'MIT',
     'long_description': 'An S3 caching backend for pants artifact cache',
@@ -29,7 +29,7 @@ setup(**
     'package_dir': {   '': 'src/python'},
     'packages': ['verst', 'verst.pants', 'verst.pants.s3cache'],
     'url': 'https://github.com/toddgardner/pants-plugins',
-    'version': '1.2.0',
+    'version': '1.3.0',
     'zip_safe': True}
 )
 
