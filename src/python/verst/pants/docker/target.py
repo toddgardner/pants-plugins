@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from pants.base.build_environment import get_scm
 from pants.base.payload import Payload
 from pants.base.payload_field import PrimitiveField

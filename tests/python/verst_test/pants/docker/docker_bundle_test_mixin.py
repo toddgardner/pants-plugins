@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from contextlib import contextmanager
 import os
 import subprocess
@@ -12,7 +13,7 @@ class DockerBundleTestMixin(object):
     self.assertIsNotNone(docker_image_products)
     product_data = docker_image_products.get(target)
     self.assertEqual(1, len(product_data))
-    result_dir, result_keys = product_data.items()[0]
+    result_dir, result_keys = list(product_data.items())[0]
     self.assertEqual(['docker_image_name'], result_keys)
     image_name_file = os.path.join(result_dir, result_keys[0])
     with open(image_name_file, 'r') as f:

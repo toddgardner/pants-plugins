@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 import logging
 import os
 import shutil
@@ -45,7 +46,7 @@ class DockerPythonBundleTask(DockerBaseBundleTask):
 
   def _prepare_directory(self, target, dependency, tmpdir):
     archive_mapping = self.context.products.get('pex_archives').get(dependency)
-    basedir, paths = archive_mapping.items()[0]
+    basedir, paths = list(archive_mapping.items())[0]
     path = paths[0]
     archive_path = os.path.join(basedir, path)
 

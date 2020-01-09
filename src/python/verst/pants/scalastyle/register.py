@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from pants.backend.jvm.tasks.scalastyle import Scalastyle
 from pants.goal.task_registrar import TaskRegistrar as task
 from pants.base.exceptions import TaskError

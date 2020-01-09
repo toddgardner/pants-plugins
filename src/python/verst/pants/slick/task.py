@@ -1,6 +1,8 @@
+from __future__ import absolute_import
 from pants.backend.jvm.tasks.nailgun_task import NailgunTask
 from .target import SlickGenTarget
 import os
+from six.moves import map
 
 class SlickTask(NailgunTask):
     """Generate the scala bindings for SLICK. Operates on slick_gen targets"""
@@ -36,7 +38,7 @@ class SlickTask(NailgunTask):
                 '--output-dir', target.target_base,
                 '--package', self.implied_package(target)]
         if target.payload.schema:
-            map(args.append, ['--schema', target.payload.schema])
+            list(map(args.append, ['--schema', target.payload.schema]))
         return self.runjava(classpath = classpath,
                             main = 'co.verst.slick.SlickGen',
                             args = args)
