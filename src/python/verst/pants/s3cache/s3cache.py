@@ -45,7 +45,12 @@ def connect_to_s3():
   except IOError:
     logger.debug('Could not load {0}, using [artifacts] profile or ENV vars'.format(CONFIG_FILE))
 
-  config = Config(connect_timeout=4, read_timeout=4)
+  # 4 sec timeout, 50 pooled conns to s3
+  config = Config(
+    connect_timeout=4, 
+    read_timeout=4,
+    max_pool_connections=50,
+  )
 
   try:
      # first try artifacts profile
