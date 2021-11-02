@@ -50,12 +50,17 @@ def _do_create_artifact_cache(self, spec, action):
         self._log.debug(
           "{0} {1} local artifact cache at {2}".format(self._task.stable_name(), action, path)
         )
+        if self._options.max_entries_per_target is None or self._options.max_entries_per_target < 0:
+          max_entries_per_target = None
+        else:
+          max_entries_per_target = self._options.max_entries_per_target
+
         return LocalArtifactCache(
           artifact_root,
           artifact_extraction_root,
           path,
           compression,
-          self._options.max_entries_per_target,
+          max_entries_per_target,
           permissions=self._options.write_permissions,
           dereference=self._options.dereference_symlinks,
         )
